@@ -1,0 +1,20 @@
+version: '3'
+services:
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   container_name: gosn-graphql-demo-backend
+  #   volumes:
+  #     - ./backend:/usr/src/app/backend
+  #   ports:
+  #     - "3000:3000"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: gosn-graphql-demo-frontend
+    volumes:
+      - ./frontend:/usr/src/app/frontend
+    ports:
+      - "3000:3000"
