@@ -4,7 +4,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: gosn-graphql-demo-backend
+    container_name: cosn-graphql-demo-backend
     volumes:
       - ./backend/src:/usr/src/app/backend/src
     ports:
@@ -13,7 +13,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: gosn-graphql-demo-frontend
+    container_name: cosn-graphql-demo-frontend
     volumes:
       - ./frontend:/usr/src/app/frontend
     ports:
