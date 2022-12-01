@@ -4,4 +4,5 @@ WORKDIR /usr/src/app
 COPY pnpm-lock.yaml .
 RUN pnpm fetch
 COPY . .
+RUN pnpm install
 CMD ["pnpm", "dev"]
