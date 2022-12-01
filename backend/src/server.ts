@@ -1,7 +1,6 @@
 import { expressMiddleware } from "@apollo/server/express4";
-import { json } from "body-parser";
 import cors from "cors";
-import express from "express";
+import express, { json } from "express";
 import { graphqlServer } from "./graphql/graphql-server";
 import { usersRouter } from "./rest/rest-router";
 
@@ -10,13 +9,10 @@ async function bootstrap() {
 
   await graphqlServer.start();
 
-  app.use(cors())
-  app.use(json())
+  app.use(cors());
+  app.use(json());
 
-  app.use(
-    "/graphql",
-    expressMiddleware(graphqlServer)
-  );
+  app.use("/graphql", expressMiddleware(graphqlServer));
 
   app.use(usersRouter);
 

@@ -1,19 +1,19 @@
 import { randomUUID } from "crypto";
+import { User } from "../entities/user";
 import { users } from "../sample-data";
 
 // A map of functions which return data for the schema.
 export const userResolvers = {
   Query: {
-    users: (_, { id }) => {
-      return id != null ? users.filter((user) => user.id === id) : users;
+    users: () => {
+      return users;
     },
   },
 
   Mutation: {
-    createUser: (_, args) => {
+    createUser: (_: unknown, args: Omit<User, "id">) => {
       const user = {
         id: randomUUID(),
-        name: args.name,
         email: args.email,
         birthDate: args.birthDate,
       };
