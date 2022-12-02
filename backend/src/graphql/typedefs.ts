@@ -4,6 +4,7 @@ export const typeDefs = `#graphql
     id: String!,
     email: String!,
     birthDate: String!
+    name: String!
   }
 
   type Query {
@@ -11,6 +12,6 @@ export const typeDefs = `#graphql
   }
 
   type Mutation {
-    createUser(email: String!, birthDate: String!): User!
+    createUser(email: String!, birthDate: String!, name: String!): User!
   }
 `;

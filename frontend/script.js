@@ -41,11 +41,16 @@ document.querySelector("#fetch-rest").addEventListener(
   "click",
    async function () {
     // 1. Fetch users
+    const users = await getUsers();
 
     // 2. For each user, get its name
+    for (const user of users) {
+      const tempUser = await getUser(user.id);
+      user.name = tempUser.name;
+    }
 
     // 3. Populate the table with array of users
-    populateTable("rest", []);
+    populateTable("rest", users);
   },
 );
 
@@ -53,8 +58,10 @@ document.querySelector("#fetch-graphql").addEventListener(
   "click",
   async function () {
     // 1. Fetch users
+    const users = await makeGrapqlCall("query Query { users { id name } }")
+    console.log(users)
 
     // 2. Populate the table with array of users
-    populateTable("graphql", []);
+    populateTable("graphql", users.data.users);
   },
 );

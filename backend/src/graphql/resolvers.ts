@@ -5,7 +5,10 @@ import { users } from "../sample-data";
 // A map of functions which return data for the schema.
 export const userResolvers = {
   Query: {
-    users: () => {
+    users: (_: unknown, args: Pick<User, "id">) => {
+      if (args.id != null) {
+        return users.filter(user => user.id === args.id);
+      }
       return users;
     },
   },
@@ -16,6 +19,7 @@ export const userResolvers = {
         id: randomUUID(),
         email: args.email,
         birthDate: args.birthDate,
+        name: args.name
       };
 
       users.push(user);
