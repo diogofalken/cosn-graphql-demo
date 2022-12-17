@@ -1,5 +1,7 @@
 # COSN GraphQL Demo
 
+Presentation available at [GraphQL.pdf](./GraphQL.pdf).
+
 ## Requirements
 
 - [Docker Engine](https://docs.docker.com/engine/)
